@@ -1,34 +1,9 @@
 production:
-  repositories:
-    quay:
-      url: quay.io
-      username: _env:QUAY_USERNAME
-      password: _env:QUAY_PASSWORD
-      email: _env:QUAY_EMAIL
   services:
-    web:
+    fluent:
       image: khash/simple_web
-      command: bundle exec rackup -p 3000
-      # build_command: bundle exec rake db:create
-      # deploy_command: bundle exec rake db:migrate
-      log_folder: /myapp/log
-      local_ports:
-        - 3000
-      public_port: "80:443"
-      pre_start_signal: "USR1"
-      pre_stop_sequence: "1m:USR2:30s:USR1:50s"
-      stop_grace: "30s"
-      capture_stdout_stderr: true
-    node:
-      image: khash/node
-      command: node test.js
-      local_ports:
-        - 1337
-      public_port: "8080"
-      requires:
-        - "web"
-    buildit:
-      git: https://github.com/khash/stacks-test.git
-      branch: master
-  databases:
-    - "mysql"
+      command: some command
+      ports: ['3000:80:443']
+      log_folder: /var/deploy/app/app.log
+    databases:
+      - 'postgresql'
