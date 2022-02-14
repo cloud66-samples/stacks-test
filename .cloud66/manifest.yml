@@ -1,12 +1,14 @@
 development:
     rails:
         configuration:
+            node_version: "10"
             reserved_server_memory: 100
             passenger_process_memory: 150
             perfect_forward_secrecy: true
 production:
     rails:
         configuration:
+            node_version: "10"
             reserved_server_memory: 100
             passenger_process_memory: 15
             perfect_forward_secrecy: true
